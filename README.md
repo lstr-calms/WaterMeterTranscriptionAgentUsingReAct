@@ -24,8 +24,34 @@ Step 7: Final Answer --> Dumps the list of dictionaries into a formatted JSON st
 #Using the Agent
 Simple run the Python script and the code will prompt the user to enter a water meter reading.
 ```
-Sample Input
+Sample Input:
 "Unit 19A reads 30 cubid meters, 19B is 5 cubic meters, 19C reads 8 cubic meter, 19B reads 5 cubic meters"
 ```
+```
+Output:
+Enter the water meter readings: Unit 19A reads 30 cubid meters, 19B is 5 cubic meters, 19C reads 8 cubic meter, 19B reads 5 cubic meters
+Water Meter Agent Starting...
+Input: Unit 19A reads 30 cubid meters, 19B is 5 cubic meters, 19C reads 8 cubic meter, 19B reads 5 cubic meters
 
-
+Thought: I need to find unit names and their readings in this text.
+Action: Extract units and numbers using regex pattern.
+Observation: Found 4 readings: [('19A', '30'), ('19B', '5'), ('19C', '8'), ('19B', '5')]
+Thought: Now I need to convert these to JSON format and handle duplicates.
+Action: Format as JSON array and ignore duplicates.
+Observation: Created 3 unique JSON entries.
+Final Answer:
+[
+  {
+    "unit": "19A",
+    "reading": 30
+  },
+  {
+    "unit": "19B",
+    "reading": 5
+  },
+  {
+    "unit": "19C",
+    "reading": 8
+  }
+]
+```
